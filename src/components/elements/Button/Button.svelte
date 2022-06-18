@@ -16,7 +16,7 @@
 <svelte:element
 	this={as}
 	class={clsx(
-		'button flex items-center justify-center whitespace-nowrap rounded-xl transition-colors duration-[400ms]',
+		'button flex items-center justify-center whitespace-nowrap rounded-xl transition-all duration-[200ms] hover:scale-105 active:scale-95',
 		className
 	)}
 	use:cssVariables={{ backgroundColor, color: textColor, hoverBackgroundColor }}

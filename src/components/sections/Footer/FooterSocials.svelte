@@ -9,16 +9,21 @@
 <div class="mt-4 mb-8 flex flex-col items-center justify-center gap-4">
 	<h4 class="text-sm font-bold uppercase">Redes Sociais</h4>
 	<div class="flex gap-6">
-		<Button as="a" href="#" class="h-16 w-16 rounded-full" aria-label="instagram">
+		<Button
+			as="a"
+			href="#"
+			class="h-16 w-16 rounded-full hover:!bg-gray-600"
+			aria-label="instagram"
+		>
 			<InstagramLogo class="h-8 w-8" />
 		</Button>
-		<Button as="a" href="#" class="h-16 w-16 rounded-full" aria-label="twitter">
+		<Button as="a" href="#" class="h-16 w-16 rounded-full hover:!bg-gray-600" aria-label="twitter">
 			<TwitterLogo class="h-8 w-8" />
 		</Button>
-		<Button as="a" href="#" class="h-16 w-16 rounded-full" aria-label="discord">
+		<Button as="a" href="#" class="h-16 w-16 rounded-full hover:!bg-gray-600" aria-label="discord">
 			<DiscordLogo class="h-8 w-8" />
 		</Button>
-		<Button as="a" href="#" class="h-16 w-16 rounded-full" aria-label="whatsapp">
+		<Button as="a" href="#" class="h-16 w-16 rounded-full hover:!bg-gray-600" aria-label="whatsapp">
 			<WhatsappLogo class="h-8 w-8" />
 		</Button>
 	</div>
