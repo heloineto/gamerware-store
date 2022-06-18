@@ -15,7 +15,7 @@
 			as="a"
 			href="/products"
 			color="green"
-			class="group w-52 !justify-start gap-2 py-2 px-4 !text-green-200 hover:shadow-md hover:shadow-green-500/50 active:shadow-inner active:shadow-green-500/50"
+			class="group w-52 !justify-start gap-2 py-2 px-4 !text-green-200"
 		>
 			Ver Computadores
 			<ArrowRight

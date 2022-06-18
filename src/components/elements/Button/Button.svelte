@@ -1,6 +1,6 @@
 <script>
-	import twColors from 'tailwindcss/colors';
-	import cssVariables from '../../../lib/utils/cssVariables';
+	import colors from '@lib/constants/tailwindColors.js';
+	import cssVariables from '@lib/utils/cssVariables';
 	import clsx from 'clsx';
 
 	export let color = 'gray';
@@ -8,9 +8,9 @@
 
 	const { class: className, ...divProps } = $$restProps;
 
-	const backgroundColor = twColors[color][700];
-	const textColor = twColors[color][300];
-	const hoverBackgroundColor = twColors[color][800];
+	const backgroundColor = colors[color][700];
+	const textColor = colors[color][300];
+	const hoverBackgroundColor = colors[color][800];
 </script>
 
 <svelte:element
