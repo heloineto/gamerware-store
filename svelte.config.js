@@ -6,15 +6,6 @@ import { resolve } from 'path';
 const config = {
 	kit: {
 		adapter: adapter(),
-		vite: {
-			resolve: {
-				alias: {
-					'@src': resolve('./src/'),
-					'@lib': resolve('./src/lib/'),
-					'@components': resolve('./src/components/'),
-				},
-			},
-		},
 	},
 
 	preprocess: [

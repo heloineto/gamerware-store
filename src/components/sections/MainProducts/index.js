@@ -1,1 +1,1 @@
-export { default } from './MainProducts';
+export { default } from './MainProducts.svelte';

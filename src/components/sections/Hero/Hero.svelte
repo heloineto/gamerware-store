@@ -4,7 +4,9 @@
 	import Button from '../../elements/Button/Button.svelte';
 </script>
 
-<div class="grid h-[calc(100vh-5rem)] min-h-[600px] flex-grow grid-cols-12 gap-8 self-center p-8">
+<div
+	class="grid h-[calc(100vh-var(--h-navbar))] min-h-[600px] flex-grow grid-cols-12 gap-8 self-center p-8"
+>
 	<div class="col-span-6 mb-20 flex flex-col justify-center">
 		<h1 class="mb-4 text-5xl font-extrabold">Computadores Gamer de Alta Performance</h1>
 		<p class="mb-8 text-lg font-medium text-gray-400">

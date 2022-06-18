@@ -5,9 +5,9 @@
 	import NavbarItem from './NavbarItem.svelte';
 </script>
 
-<div class="pt-4">
+<div class="flex h-[var(--h-navbar)] flex-col pt-4">
 	<nav
-		class="mx-8 flex h-16 items-center justify-between rounded-xl border border-solid border-gray-500 bg-gray-600 p-2"
+		class="mx-8 flex items-center justify-between rounded-xl border border-solid border-gray-500 bg-gray-600 p-2"
 		aria-label="superior"
 	>
 		<div>
@@ -31,4 +31,7 @@
 </div>
 
 <style>
+	:root {
+		--h-navbar: 5rem;
+	}
 </style>

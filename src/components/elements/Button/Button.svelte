@@ -1,26 +1,27 @@
 <script>
-	import colors from '@lib/constants/tailwindColors.js';
-	import cssVariables from '@lib/utils/cssVariables';
+	import colors from './../../../lib/constants/tailwindColors.js';
 	import clsx from 'clsx';
 
 	export let color = 'gray';
-	export let as = 'button';
+	export let as = 'a';
 
-	const { class: className, ...divProps } = $$restProps;
+	const { class: className, ...props } = $$restProps;
 
-	const backgroundColor = colors[color][700];
-	const textColor = colors[color][300];
-	const hoverBackgroundColor = colors[color][800];
+	const colorObj = colors[color];
 </script>
 
 <svelte:element
 	this={as}
 	class={clsx(
-		'button flex items-center justify-center whitespace-nowrap rounded-xl transition-all duration-[200ms] hover:scale-105 active:scale-95',
+		'button flex items-center justify-center whitespace-nowrap rounded-xl transition-all duration-200 hover:scale-105 active:scale-95',
 		className
 	)}
-	use:cssVariables={{ backgroundColor, color: textColor, hoverBackgroundColor }}
-	{...divProps}
+	style="
+		--backgroundColor: {colorObj[700]};
+		--color: {colorObj[300]};
+		--hoverBackgroundColor: {colorObj[800]};
+	"
+	{...props}
 >
 	<slot />
 </svelte:element>
