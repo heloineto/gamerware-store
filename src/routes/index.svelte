@@ -1,8 +1,8 @@
 <script>
-	import Hero from '../components/sections/Hero.svelte';
+	import Hero from '../components/sections/Hero';
 </script>
 
-<header>
+<header class="flex h-[calc(100vh-5rem)] items-center justify-center">
 	<Hero />
 </header>
 <main />
