@@ -1,6 +1,7 @@
 <script>
 	import GameController from 'phosphor-svelte/lib/GameController';
 	import ShoppingCart from 'phosphor-svelte/lib/ShoppingCart';
+	import Button from '../../elements/Button/Button.svelte';
 	import NavbarItem from './NavbarItem.svelte';
 </script>
 
@@ -10,12 +11,9 @@
 		aria-label="superior"
 	>
 		<div>
-			<a
-				href="/"
-				class="flex items-center justify-center rounded-xl bg-gray-700 p-2 hover:bg-gray-800"
-			>
+			<Button as="a" href="/" class="p-2">
 				<GameController class="h-7 w-7" />
-			</a>
+			</Button>
 		</div>
 		<div class="flex h-full gap-3">
 			<NavbarItem href="/">Início</NavbarItem>
@@ -24,13 +22,10 @@
 			<NavbarItem href="/register">Cadastre-se</NavbarItem>
 		</div>
 		<div class="">
-			<a
-				class="flex items-center justify-center gap-2 rounded-xl bg-gray-700 p-2 hover:bg-gray-800"
-				href="/cart"
-			>
+			<Button as="a" href="/cart" class="gap-2 p-2">
 				<ShoppingCart class="h-7 w-7" />
 				<span class="font-medium">2</span>
-			</a>
+			</Button>
 		</div>
 	</nav>
 </div>

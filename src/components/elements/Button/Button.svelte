@@ -1,33 +1,37 @@
 <script>
 	import twColors from 'tailwindcss/colors';
+	import cssVariables from '../../../lib/utils/cssVariables';
+	import clsx from 'clsx';
 
 	export let color = 'gray';
 	export let as = 'button';
 
-	function cssVariables(node, variables) {
-		setCssVariables(node, variables);
+	const { class: className, ...divProps } = $$restProps;
 
-		return {
-			update(variables) {
-				setCssVariables(node, variables);
-			},
-		};
-	}
-	function setCssVariables(node, variables) {
-		for (const name in variables) {
-			node.style.setProperty(`--${name}`, variables[name]);
-		}
-	}
+	const backgroundColor = twColors[color][700];
+	const textColor = twColors[color][300];
+	const hoverBackgroundColor = twColors[color][800];
 </script>
 
-<svelte:element this={as} class="button">
+<svelte:element
+	this={as}
+	class={clsx(
+		'button flex flex-grow items-center justify-center whitespace-nowrap rounded-xl transition-colors duration-[400ms]',
+		className
+	)}
+	use:cssVariables={{ backgroundColor, color: textColor, hoverBackgroundColor }}
+	{...divProps}
+>
 	<slot />
 </svelte:element>
 
 <style>
 	.button {
-		font-size: calc(var(--size) * 1px);
 		color: var(--color);
-		background-color: var(--color);
+		background-color: var(--backgroundColor);
+	}
+
+	.button:hover {
+		background-color: var(--hoverBackgroundColor);
 	}
 </style>
