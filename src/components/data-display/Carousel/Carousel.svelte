@@ -1,8 +1,10 @@
 <script>
-	import { onDestroy, onMount, tick, createEventDispatcher } from 'svelte';
-	import CarouselDots from './CarouselDots.svelte';
-	import CarouselArrow from './CarouselArrow.svelte';
-	import clsx from 'clsx';
+	import { onDestroy, onMount, tick, createEventDispatcher } from "svelte";
+	import CarouselDots from "./CarouselDots.svelte";
+	import CarouselArrow from "./CarouselArrow.svelte";
+	import clsx from "clsx";
+	import mutation from "../../../lib/actions/mutation";
+	import resize from "../../../lib/actions/resize";
 	// import { swipeable } from '../../actions/swipeable';
 	// import { hoverable } from '../../actions/hoverable';
 	// import { tappable } from '../../actions/tappable';
@@ -15,31 +17,72 @@
 	let offset = 0;
 	let durationMs = 0;
 	let pagesCount = 1;
+	let pageWidth;
+	let container;
+	let pages;
 
 	const { class: classNames, ...restProps } = $$restProps;
 
-	function showPrevPage() {}
+	function gotoPrevPage() {
+		if (currentPageIndex === 0) return;
+		changePage(currentPageIndex - 1);
+	}
 
-	function showNextPage() {}
+	function gotoNextPage() {
+		if (currentPageIndex >= pagesCount) return;
+		changePage(currentPageIndex + 1);
+	}
 
 	function changePage(pageIndex) {
-		console.log(pageIndex);
+		currentPageIndex = pageIndex;
+
+		offset = pageIndex * pageWidth;
+	}
+
+	function applyPagesWidth(pages) {
+		for (const page of pages) {
+			page.style.minWidth = `${pageWidth}px`;
+			page.style.maxWidth = `${pageWidth}px`;
+		}
+	}
+
+	onMount(() => {
+		pagesCount = pages.childElementCount;
+		pageWidth = container.offsetWidth;
+
+		applyPagesWidth(pages.children);
+	});
+
+	const mutationOpts = {
+		childList({ target }) {
+			pagesCount = target.childElementCount;
+		},
+	};
+
+	function onResize() {
+		pageWidth = container.offsetWidth;
 	}
 </script>
 
-<div class={clsx('flex w-full flex-col items-center', classNames)} {...restProps}>
-	<div class="relative box-border flex h-[30rem] w-full overflow-hidden">
+<div class={clsx("flex w-full flex-col items-center", classNames)} {...restProps}>
+	<div
+		class={clsx("relative box-border flex h-[30rem] w-full overflow-hidden", containerClass)}
+		bind:this={container}
+		use:resize={onResize}
+	>
 		<CarouselArrow
 			class="absolute left-0 h-full"
 			direction="PREV"
 			disabled={currentPageIndex === 0}
-			on:click={showPrevPage}
+			on:click={gotoPrevPage}
 		/>
 
 		<div
-			class={clsx('sc-carousel__pages-container w-full overflow-hidden', containerClass)}
+			class="flex"
+			bind:this={pages}
+			use:mutation={mutationOpts}
 			style="
-          transform: translateX({offset}px);
+          transform: translateX({-offset}px);
           transition-duration: {durationMs}ms;
           transition-timing-function: ease-in-out;
         "
@@ -51,9 +94,14 @@
 			class="absolute right-0 h-full"
 			direction="NEXT"
 			disabled={currentPageIndex === pagesCount - 1}
-			on:click={showNextPage}
+			on:click={gotoNextPage}
 		/>
 	</div>
 
-	<CarouselDots class="mt-3" {pagesCount} {currentPageIndex} on:pageChange={changePage} />
+	<CarouselDots
+		class="mt-3"
+		{pagesCount}
+		{currentPageIndex}
+		on:pageChange={(event) => changePage(event.detail)}
+	/>
 </div>

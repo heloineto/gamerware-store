@@ -11,12 +11,9 @@
 	const { class: className, ...restProps } = $$restProps;
 </script>
 
-<div
-	class={clsx('h-dots w-dots flex flex-wrap items-center justify-center px-8', className)}
-	{...restProps}
->
+<div class={clsx('h-6 flex flex-wrap items-center justify-center px-8', className)} {...restProps}>
 	{#each Array(pagesCount) as _, pageIndex (pageIndex)}
-		<div class="flex items-center justify-center">
+		<div class="flex h-6 w-6 items-center justify-center">
 			<CarouselDot
 				active={currentPageIndex === pageIndex}
 				on:click={() => dispatch('pageChange', pageIndex)}
@@ -24,13 +21,3 @@
 		</div>
 	{/each}
 </div>
-
-<style>
-	.h-dots {
-		height: calc(var(--h-carousel-dot) + 0.875rem);
-	}
-
-	.w-dots {
-		width: calc(var(--w-carousel-dot) + 0.625rem);
-	}
-</style>
