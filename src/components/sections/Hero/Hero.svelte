@@ -5,9 +5,11 @@
 </script>
 
 <div
-	class="grid h-[calc(100vh-var(--h-navbar))] min-h-[600px] flex-grow grid-cols-12 gap-8 self-center px-4 py-8 md:px-8"
+	class="relative grid h-[calc(100vh-var(--h-navbar))] min-h-[700px] flex-grow grid-cols-12 gap-8 self-center px-4 py-8 md:px-8"
 >
-	<div class="col-span-6 mb-20 flex flex-col justify-center">
+	<div
+		class="absolute z-10 mb-20 flex h-full flex-col justify-center bg-gradient-to-b from-gray-800 via-gray-800/25 to-gray-800 p-4 md:static md:col-span-6 md:bg-inherit"
+	>
 		<p class="mb-2 text-sm font-semibold uppercase tracking-wide text-gray-400">Gamerware Store</p>
 		<h1 class="-ml-1 mb-4 text-5xl font-extrabold leading-tight">
 			<span class="text-green-500">Computadores Gamer</span>
@@ -45,8 +47,8 @@
 		</Button>
 	</div>
 	<img
-		class="col-span-6 h-full rounded-lg border border-gray-700 object-cover"
+		class="absolute top-0 left-0 h-full object-cover md:static md:col-span-6 md:mx-0 md:rounded-lg md:border md:border-gray-700"
 		src="/hero-images/0.jpg"
-		alt="hero"
+		alt=""
 	/>
 </div>
