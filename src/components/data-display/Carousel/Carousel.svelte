@@ -39,7 +39,7 @@
 		offset = pageIndex * pageWidth;
 	}
 
-	function applyPagesWidth(pages) {
+	function applyPagesWidth(pages, pageWidth) {
 		for (const page of pages) {
 			page.style.minWidth = `${pageWidth}px`;
 			page.style.maxWidth = `${pageWidth}px`;
@@ -50,7 +50,7 @@
 		pagesCount = pages.childElementCount;
 		pageWidth = container.offsetWidth;
 
-		applyPagesWidth(pages.children);
+		applyPagesWidth(pages.children, pageWidth);
 	});
 
 	const mutationOpts = {
@@ -61,6 +61,7 @@
 
 	function onResize() {
 		pageWidth = container.offsetWidth;
+		applyPagesWidth(pages.children, pageWidth);
 	}
 </script>
 
@@ -78,13 +79,12 @@
 		/>
 
 		<div
-			class="flex"
+			class="flex ease-in-out"
 			bind:this={pages}
 			use:mutation={mutationOpts}
 			style="
           transform: translateX({-offset}px);
           transition-duration: {durationMs}ms;
-          transition-timing-function: ease-in-out;
         "
 		>
 			<slot />

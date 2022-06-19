@@ -8,8 +8,12 @@
 	class="grid h-[calc(100vh-var(--h-navbar))] min-h-[600px] flex-grow grid-cols-12 gap-8 self-center p-8"
 >
 	<div class="col-span-6 mb-20 flex flex-col justify-center">
-		<h1 class="mb-4 text-5xl font-extrabold">Computadores Gamer de Alta Performance</h1>
-		<p class="mb-8 text-lg font-medium text-gray-400">
+		<p class="mb-4 text-sm font-semibold uppercase tracking-wide text-gray-200">Gamerware Store</p>
+		<h1 class="-ml-1 mb-4 text-5xl font-extrabold leading-tight">
+			<span class="text-green-500">Computadores Gamer</span>
+			de Alta Performance
+		</h1>
+		<p class="mb-8 text-lg leading-relaxed text-gray-300">
 			Compre seu PC Gamer com placas de vídeo e processadores top de linha na Gamerware! Encontre as
 			melhores ofertas aqui.
 		</p>
