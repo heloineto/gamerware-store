@@ -8,12 +8,26 @@
 	class="grid h-[calc(100vh-var(--h-navbar))] min-h-[600px] flex-grow grid-cols-12 gap-8 self-center p-8"
 >
 	<div class="col-span-6 mb-20 flex flex-col justify-center">
-		<p class="mb-4 text-sm font-semibold uppercase tracking-wide text-gray-200">Gamerware Store</p>
+		<p class="mb-2 text-sm font-semibold uppercase tracking-wide text-gray-400">Gamerware Store</p>
 		<h1 class="-ml-1 mb-4 text-5xl font-extrabold leading-tight">
 			<span class="text-green-500">Computadores Gamer</span>
 			de Alta Performance
 		</h1>
-		<p class="mb-8 text-lg leading-relaxed text-gray-300">
+		<dl class="mb-4 flex items-center text-xs font-semibold uppercase tracking-wide text-gray-300">
+			<dd class="flex items-center">
+				<img class="mr-2 h-7 flex-none" src="/logos/nvidea.svg" alt="Nvidea logo" />
+				Nvidea
+			</dd>
+			<dd class="ml-6 flex items-center">
+				<img class="mr-2 h-8 flex-none" src="/logos/cooler-master.svg" alt="Cooler Master logo" />
+				Cooler Master
+			</dd>
+			<dd class="ml-6 flex items-center">
+				<img class="mr-2 h-8 flex-none" src="/logos/intel.svg" alt="Intel logo" />
+				Intel
+			</dd>
+		</dl>
+		<p class="mb-8 text-lg leading-relaxed text-gray-200">
 			Compre seu PC Gamer com placas de vídeo e processadores top de linha na Gamerware! Encontre as
 			melhores ofertas aqui.
 		</p>
@@ -32,7 +46,7 @@
 	</div>
 	<img
 		class="col-span-6 h-full rounded-lg border border-gray-700 object-cover"
-		src="/hero-image.jpg"
+		src="/hero-images/0.jpg"
 		alt="hero"
 	/>
 </div>

@@ -1,20 +1,19 @@
 <script>
-	import { onDestroy, onMount, tick, createEventDispatcher } from "svelte";
+	import { onMount } from "svelte";
 	import CarouselDots from "./CarouselDots.svelte";
 	import CarouselArrow from "./CarouselArrow.svelte";
 	import clsx from "clsx";
 	import mutation from "../../../lib/actions/mutation";
 	import resize from "../../../lib/actions/resize";
-	// import { swipeable } from '../../actions/swipeable';
-	// import { hoverable } from '../../actions/hoverable';
-	// import { tappable } from '../../actions/tappable';
-	// import { applyParticleSizes, createResizeObserver } from '../../utils/page';
-	// import { getClones, applyClones } from '../../utils/clones';
-	// import { get, switcher } from '../../utils/object';
+	import { spring } from "svelte/motion";
+
 	export let containerClass;
 
 	let currentPageIndex = 0;
-	let offset = 0;
+	let offset = spring(0, {
+		stiffness: 0.08,
+		damping: 0.5,
+	});
 	let durationMs = 0;
 	let pagesCount = 1;
 	let pageWidth;
@@ -33,13 +32,17 @@
 		changePage(currentPageIndex + 1);
 	}
 
+	function updateOffset() {
+		offset.set(currentPageIndex * pageWidth);
+	}
+
 	function changePage(pageIndex) {
 		currentPageIndex = pageIndex;
 
-		offset = pageIndex * pageWidth;
+		updateOffset(currentPageIndex, pageWidth);
 	}
 
-	function applyPagesWidth(pages, pageWidth) {
+	function updatePagesWidth(pages, pageWidth) {
 		for (const page of pages) {
 			page.style.minWidth = `${pageWidth}px`;
 			page.style.maxWidth = `${pageWidth}px`;
@@ -50,7 +53,7 @@
 		pagesCount = pages.childElementCount;
 		pageWidth = container.offsetWidth;
 
-		applyPagesWidth(pages.children, pageWidth);
+		updatePagesWidth(pages.children, pageWidth);
 	});
 
 	const mutationOpts = {
@@ -61,7 +64,9 @@
 
 	function onResize() {
 		pageWidth = container.offsetWidth;
-		applyPagesWidth(pages.children, pageWidth);
+
+		updatePagesWidth(pages.children, pageWidth);
+		updateOffset();
 	}
 </script>
 
@@ -72,7 +77,7 @@
 		use:resize={onResize}
 	>
 		<CarouselArrow
-			class="absolute left-0 h-full"
+			class="absolute left-4 h-full"
 			direction="PREV"
 			disabled={currentPageIndex === 0}
 			on:click={gotoPrevPage}
@@ -83,7 +88,7 @@
 			bind:this={pages}
 			use:mutation={mutationOpts}
 			style="
-          transform: translateX({-offset}px);
+          transform: translateX({-$offset}px);
           transition-duration: {durationMs}ms;
         "
 		>
@@ -91,7 +96,7 @@
 		</div>
 
 		<CarouselArrow
-			class="absolute right-0 h-full"
+			class="absolute right-4 h-full"
 			direction="NEXT"
 			disabled={currentPageIndex === pagesCount - 1}
 			on:click={gotoNextPage}
