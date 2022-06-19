@@ -1,5 +1,5 @@
 <script>
-	import Carousel from '../../data-display/Carousel';
+	import Carousel from "../../data-display/Carousel";
 </script>
 
 <section class="mx-8" aria-label="slider">

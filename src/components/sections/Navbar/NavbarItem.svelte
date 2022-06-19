@@ -1,5 +1,5 @@
 <script>
-	import Button from '../../elements/Button/Button.svelte';
+	import Button from "../../elements/Button/Button.svelte";
 
 	export let href;
 </script>

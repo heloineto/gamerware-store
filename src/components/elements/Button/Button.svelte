@@ -1,9 +1,9 @@
 <script>
-	import colors from './../../../lib/constants/tailwindColors.js';
-	import clsx from 'clsx';
+	import colors from "./../../../lib/constants/tailwindColors.js";
+	import clsx from "clsx";
 
-	export let color = 'gray';
-	export let as = 'a';
+	export let color = "gray";
+	export let as = "a";
 
 	const { class: className, ...props } = $$restProps;
 
@@ -13,7 +13,7 @@
 <svelte:element
 	this={as}
 	class={clsx(
-		'button flex items-center justify-center whitespace-nowrap rounded-xl transition-all duration-200 hover:scale-105 active:scale-95',
+		"button flex items-center justify-center whitespace-nowrap rounded-xl transition-all duration-200 hover:scale-105 active:scale-95",
 		className
 	)}
 	style="

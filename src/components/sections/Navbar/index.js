@@ -1,1 +1,1 @@
-export { default } from './Navbar.svelte';
+export { default } from "./Navbar.svelte";

@@ -1,7 +1,7 @@
 <script>
-	import { ArrowRight } from 'phosphor-svelte';
+	import { ArrowRight } from "phosphor-svelte";
 
-	import Button from '../../elements/Button/Button.svelte';
+	import Button from "../../elements/Button/Button.svelte";
 </script>
 
 <div

@@ -1,1 +1,1 @@
-export { default } from './Hero.svelte';
+export { default } from "./Hero.svelte";

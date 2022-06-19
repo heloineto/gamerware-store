@@ -1,7 +1,7 @@
 <script>
-	import FooterColumn from './FooterColum.svelte';
-	import FooterItem from './FooterItem.svelte';
-	import FooterSocials from './FooterSocials.svelte';
+	import FooterColumn from "./FooterColum.svelte";
+	import FooterItem from "./FooterItem.svelte";
+	import FooterSocials from "./FooterSocials.svelte";
 </script>
 
 <footer

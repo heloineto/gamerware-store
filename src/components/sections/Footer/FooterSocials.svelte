@@ -1,9 +1,9 @@
 <script>
-	import TwitterLogo from 'phosphor-svelte/lib/TwitterLogo';
-	import DiscordLogo from 'phosphor-svelte/lib/DiscordLogo';
-	import InstagramLogo from 'phosphor-svelte/lib/InstagramLogo';
-	import WhatsappLogo from 'phosphor-svelte/lib/WhatsappLogo';
-	import FooterSocialLink from './FooterSocialLink.svelte';
+	import TwitterLogo from "phosphor-svelte/lib/TwitterLogo";
+	import DiscordLogo from "phosphor-svelte/lib/DiscordLogo";
+	import InstagramLogo from "phosphor-svelte/lib/InstagramLogo";
+	import WhatsappLogo from "phosphor-svelte/lib/WhatsappLogo";
+	import FooterSocialLink from "./FooterSocialLink.svelte";
 </script>
 
 <div class="mt-4 mb-8 flex flex-col items-center justify-center gap-4">

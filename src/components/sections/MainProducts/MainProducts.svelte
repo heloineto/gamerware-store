@@ -1,7 +1,7 @@
 <script>
-	import ArrowRight from 'phosphor-svelte/lib/ArrowRight';
+	import ArrowRight from "phosphor-svelte/lib/ArrowRight";
 
-	import Button from '../../elements/Button/Button.svelte';
+	import Button from "../../elements/Button/Button.svelte";
 </script>
 
 <section class="mx-8 flex flex-col pt-4 pb-12" aria-label="produtos principais">

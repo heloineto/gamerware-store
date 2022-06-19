@@ -1,8 +1,8 @@
 <script>
-	import GameController from 'phosphor-svelte/lib/GameController';
-	import ShoppingCart from 'phosphor-svelte/lib/ShoppingCart';
-	import Button from '../../elements/Button/Button.svelte';
-	import NavbarItem from './NavbarItem.svelte';
+	import GameController from "phosphor-svelte/lib/GameController";
+	import ShoppingCart from "phosphor-svelte/lib/ShoppingCart";
+	import Button from "../../elements/Button/Button.svelte";
+	import NavbarItem from "./NavbarItem.svelte";
 </script>
 
 <div class="flex h-[var(--h-navbar)] flex-col pt-4">
