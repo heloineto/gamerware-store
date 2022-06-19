@@ -5,10 +5,10 @@
 </script>
 
 <div
-	class="relative grid h-[calc(100vh-var(--h-navbar))] min-h-[700px] flex-grow grid-cols-12 gap-8 self-center px-4 py-8 md:px-8"
+	class="relative grid h-[calc(100vh-var(--h-navbar))] min-h-[700px] flex-grow grid-cols-12 gap-4 self-center px-4 py-8 md:px-8"
 >
 	<div
-		class="absolute z-10 mb-20 flex h-full flex-col justify-center bg-gradient-to-b from-gray-800 via-gray-800/25 to-gray-800 p-4 md:static md:col-span-6 md:bg-inherit"
+		class="absolute z-10 mb-20 flex h-full flex-col justify-center bg-gradient-to-b from-gray-800 via-gray-800/25 to-gray-800 p-4 md:static md:col-span-6"
 	>
 		<p class="mb-2 text-sm font-semibold uppercase tracking-wide text-gray-400">Gamerware Store</p>
 		<h1 class="-ml-1 mb-4 text-5xl font-extrabold leading-tight">

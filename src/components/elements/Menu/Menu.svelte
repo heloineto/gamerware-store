@@ -1,9 +1,9 @@
 <script>
 	import breakpoints from "../../../lib/constants/breakpoints";
 	import MediaQuery from "../MediaQuery/MediaQuery.svelte";
-	import MenuResponsive from "./MenuResponsive.svelte";
+	import MobileMenu from "./MobileMenu.svelte";
 
-	export let breakpoint;
+	export let breakpoint = "2xl";
 </script>
 
 <MediaQuery query="(min-width: {breakpoints[breakpoint]}px)" let:matches>
@@ -12,8 +12,8 @@
 			<slot />
 		</div>
 	{:else}
-		<MenuResponsive>
+		<MobileMenu>
 			<slot />
-		</MenuResponsive>
+		</MobileMenu>
 	{/if}
 </MediaQuery>

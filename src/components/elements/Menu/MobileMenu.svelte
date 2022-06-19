@@ -4,8 +4,8 @@
 	import X from "phosphor-svelte/lib/X";
 	import url from "../../../lib/stores/url";
 	import Modal from "../Modal/Modal.svelte";
-	import clsx from "clsx";
 	import { onMount } from "svelte";
+	import clsx from "clsx";
 
 	let open = false;
 	let element;

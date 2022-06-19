@@ -5,7 +5,7 @@
 </script>
 
 <footer
-	class="flex flex-col items-center justify-center border-t-2 border-gray-700 bg-gray-900"
+	class="mt-auto flex flex-col items-center justify-center border-t-2 border-gray-700 bg-gray-900"
 	aria-label="rodapé"
 >
 	<FooterSocials />

@@ -13,7 +13,7 @@
 
 <style>
 	#root {
-		@apply m-auto bg-gray-800;
+		@apply m-auto flex min-h-screen flex-col bg-gray-800;
 		max-width: 1200px;
 	}
 
@@ -21,5 +21,9 @@
 		#root {
 			@apply border-x-2 border-gray-500;
 		}
+	}
+
+	:global(.highlight-white) {
+		box-shadow: inset 0 1px 0 0 rgb(255 255 255 / 20%);
 	}
 </style>
