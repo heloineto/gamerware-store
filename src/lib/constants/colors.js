@@ -1,4 +1,4 @@
-const tailwindColors = {
+const colors = {
 	slate: {
 		50: "#f8fafc",
 		100: "#f1f5f9",
@@ -280,4 +280,4 @@ const tailwindColors = {
 	},
 };
 
-export default tailwindColors;
+export default colors;

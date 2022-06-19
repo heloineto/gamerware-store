@@ -1,5 +1,5 @@
 <script>
-	import colors from "./../../../lib/constants/tailwindColors.js";
+	import colors from "../../../lib/constants/colors.js";
 	import clsx from "clsx";
 
 	export let color = "gray";
@@ -21,6 +21,7 @@
 		--color: {colorObj[300]};
 		--hoverBackgroundColor: {colorObj[800]};
 	"
+	on:click
 	{...props}
 >
 	<slot />

@@ -9,7 +9,7 @@
 	aria-label="rodapé"
 >
 	<FooterSocials />
-	<div class="flex gap-20 py-8 px-12">
+	<div class="grid grid-cols-2 gap-4 py-8 px-8">
 		<FooterColumn title="SAC">
 			<FooterItem>Email: atendimento@gamerware.com</FooterItem>
 			<FooterItem>Telefone: (00) 0000-0000</FooterItem>

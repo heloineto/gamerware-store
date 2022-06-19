@@ -2,12 +2,13 @@
 	import GameController from "phosphor-svelte/lib/GameController";
 	import ShoppingCart from "phosphor-svelte/lib/ShoppingCart";
 	import Button from "../../elements/Button/Button.svelte";
+	import Menu from "../../elements/Menu";
 	import NavbarItem from "./NavbarItem.svelte";
 </script>
 
 <div class="flex h-[var(--h-navbar)] flex-col pt-4">
 	<nav
-		class="mx-8 flex items-center justify-between rounded-xl border border-solid border-gray-500 bg-gray-600 p-2"
+		class="mx-4 flex items-center justify-between rounded-xl border border-solid border-gray-500 bg-gray-600 p-2 md:mx-8"
 		aria-label="superior"
 	>
 		<div>
@@ -15,11 +16,13 @@
 				<GameController class="h-7 w-7" />
 			</Button>
 		</div>
-		<div class="flex h-full gap-3">
-			<NavbarItem href="/">Início</NavbarItem>
-			<NavbarItem href="/products">Produtos</NavbarItem>
-			<NavbarItem href="/contact">Entre em contato</NavbarItem>
-			<NavbarItem href="/register">Cadastre-se</NavbarItem>
+		<div class="flex h-full flex-grow items-center justify-center">
+			<Menu breakpoint="md">
+				<NavbarItem href="/">Início</NavbarItem>
+				<NavbarItem href="/products">Produtos</NavbarItem>
+				<NavbarItem href="/contact">Entre em contato</NavbarItem>
+				<NavbarItem href="/register">Cadastre-se</NavbarItem>
+			</Menu>
 		</div>
 		<div class="">
 			<Button as="a" href="/cart" class="gap-2 p-2">

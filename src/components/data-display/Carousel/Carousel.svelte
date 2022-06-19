@@ -1,11 +1,11 @@
 <script>
 	import { onMount } from "svelte";
+	import { spring } from "svelte/motion";
 	import CarouselDots from "./CarouselDots.svelte";
 	import CarouselArrow from "./CarouselArrow.svelte";
-	import clsx from "clsx";
 	import mutation from "../../../lib/actions/mutation";
 	import resize from "../../../lib/actions/resize";
-	import { spring } from "svelte/motion";
+	import clsx from "clsx";
 
 	export let containerClass;
 
