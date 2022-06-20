@@ -3,9 +3,9 @@
 	import clsx from "clsx";
 
 	export let color = "gray";
-	export let as = "a";
+	export let as = "button";
 
-	const { class: className, ...props } = $$restProps;
+	const { class: className, ...restProps } = $$restProps;
 
 	const colorObj = colors[color];
 </script>
@@ -22,7 +22,9 @@
 		--hoverBackgroundColor: {colorObj[800]};
 	"
 	on:click
-	{...props}
+	on:mouseenter
+	on:mouseleave
+	{...restProps}
 >
 	<slot />
 </svelte:element>

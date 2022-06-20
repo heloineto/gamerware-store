@@ -13,6 +13,20 @@
 		<meta name="msapplication-TileColor" content="#ffffff" />
 		<meta name="theme-color" content="#ffffff" />
 		<link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
+		<style>
+			/* Change bg in autofill textbox */
+			input:-webkit-autofill,
+			input:-webkit-autofill:hover,
+			input:-webkit-autofill:focus,
+			input:-webkit-autofill:active {
+				-webkit-box-shadow: 0 0 0 30px rgb(71 85 105) inset !important;
+			}
+
+			/* Change text in autofill textbox */
+			input:-webkit-autofill {
+				-webkit-text-fill-color: white !important;
+			}
+		</style>
 		%sveltekit.head%
 	</head>
 
