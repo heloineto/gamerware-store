@@ -1,7 +1,7 @@
 <script>
 	import clsx from "clsx";
 	import { afterUpdate, onMount } from "svelte";
-	import isFilled from "./utils/isFilled";
+	import isFilled from "./TextField/TextField/utils/isFilled";
 
 	export let name;
 	export let label;
