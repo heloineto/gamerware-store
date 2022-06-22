@@ -3,18 +3,18 @@
 	import clickOutside from "../../../lib/actions/clickOutside";
 	import clsx from "clsx";
 	import { fly } from "svelte/transition";
-	import { onMount } from "svelte";
 
 	export let open = false;
 	export let cardProps = {};
 	export let exclude;
+	export let onClose;
 
 	const { class: className } = $$restProps;
 
 	const { class: cardClassName, ...restCardProps } = cardProps;
 
 	function onClickOutside() {
-		open = false;
+		onClose?.();
 	}
 
 	$: if (exclude) {

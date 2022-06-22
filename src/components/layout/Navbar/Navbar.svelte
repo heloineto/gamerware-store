@@ -4,6 +4,7 @@
 	import Button from "../../elements/Button/Button.svelte";
 	import Menu from "../../elements/Menu";
 	import NavbarItem from "./NavbarItem.svelte";
+	import cart from "../../../lib/stores/cart";
 </script>
 
 <div class="flex h-[var(--h-navbar)] flex-col pt-4">
@@ -11,8 +12,8 @@
 		class="mx-4 flex items-center justify-between rounded-xl border border-solid border-gray-500 bg-gray-600 p-2 md:mx-8"
 		aria-label="superior"
 	>
-		<div>
-			<Button as="a" href="/" class="p-2">
+		<div class="w-32">
+			<Button as="a" href="/" class="w-min p-2">
 				<GameController class="h-7 w-7" />
 			</Button>
 		</div>
@@ -24,10 +25,10 @@
 				<NavbarItem href="/register">Cadastre-se</NavbarItem>
 			</Menu>
 		</div>
-		<div class="">
-			<Button as="a" href="/cart" class="gap-2 p-2">
+		<div class="w-32">
+			<Button as="a" href="/cart" class="w-28 gap-2 p-2">
 				<ShoppingCart class="h-7 w-7" />
-				<span class="font-medium">2</span>
+				<span class="font-medium">{$cart.products.length}</span>
 			</Button>
 		</div>
 	</nav>
