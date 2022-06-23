@@ -19,6 +19,10 @@
 	onMount(() => {
 		exclude = [element];
 	});
+
+	function onCloseModal() {
+		open = false;
+	}
 </script>
 
 <div class="relative flex h-full" bind:this={element}>
@@ -29,7 +33,7 @@
 			<List class="h-6 w-6" weight="bold" />
 		{/if}
 	</Button>
-	<Modal class="!items-start pt-24" bind:open {exclude}>
+	<Modal class="!items-start pt-24" {open} onClose={onCloseModal} {exclude}>
 		<div class="flex w-60 flex-col gap-3">
 			<slot />
 		</div>

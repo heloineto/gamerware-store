@@ -31,7 +31,7 @@
 		class={classes(
 			"absolute left-2 inline-block bg-gray-600 px-1 transition-all rounded-md",
 			focus ? "text-green-300" : "text-gray-100",
-			shrink ? "top-[-9px] text-xs font-medium" : "top-[5px] font-normal text-base"
+			shrink ? "top-[-9px] text-xs font-medium" : "top-[6px] font-normal text-base"
 		)}
 	>
 		{label}
