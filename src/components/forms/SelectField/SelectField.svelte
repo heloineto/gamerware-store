@@ -6,6 +6,7 @@
 	export let name;
 	export let label;
 	export let value = "";
+	export let options = [];
 	export let errors = {};
 
 	let input;
@@ -23,7 +24,7 @@
 
 <div class={$$props.class}>
 	<div
-		class="relative h-10 rounded-md border border-gray-300 px-3 py-2 shadow-sm focus-within:border-green-400 focus-within:ring-1 focus-within:ring-green-400"
+		class="relative rounded-md border border-gray-300 px-3 py-2 shadow-sm focus-within:border-green-400 focus-within:ring-1 focus-within:ring-green-400"
 	>
 		<label
 			for={name}
@@ -35,16 +36,23 @@
 		>
 			{label}
 		</label>
-		<input
+
+		<select
 			class="block w-full border-0 bg-transparent p-0 text-gray-100 placeholder-gray-500 focus:ring-0 sm:text-sm"
 			type="text"
+			cols="30"
+			rows="10"
 			bind:this={input}
 			bind:value
 			on:focus={() => (focus = true)}
 			on:blur={() => (focus = false)}
 			id={name}
 			{name}
-		/>
+		>
+			{#each options as option}
+				<option class="bg-gray-500 text-base" value={option}>{option}</option>
+			{/each}
+		</select>
 	</div>
 	{#if errors[name]}
 		<p class="text-sm text-red-500">{errors[name]}</p>

@@ -23,7 +23,9 @@
 
 <div class={$$props.class}>
 	<div
-		class="relative h-10 rounded-md border border-gray-300 px-3 py-2 shadow-sm focus-within:border-green-400 focus-within:ring-1 focus-within:ring-green-400"
+		class={classes(
+			"relative rounded-md border border-gray-300 px-3 py-2 shadow-sm focus-within:border-green-400 focus-within:ring-1 focus-within:ring-green-400"
+		)}
 	>
 		<label
 			for={name}
@@ -35,9 +37,11 @@
 		>
 			{label}
 		</label>
-		<input
+		<textarea
 			class="block w-full border-0 bg-transparent p-0 text-gray-100 placeholder-gray-500 focus:ring-0 sm:text-sm"
 			type="text"
+			cols="30"
+			rows="10"
 			bind:this={input}
 			bind:value
 			on:focus={() => (focus = true)}

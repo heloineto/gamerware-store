@@ -4,6 +4,7 @@
 
 	export let color = "gray";
 	export let as = "button";
+	export let disabled = false;
 
 	const { class: className, ...restProps } = $$restProps;
 
@@ -24,6 +25,7 @@
 	on:click
 	on:mouseenter
 	on:mouseleave
+	{disabled}
 	{...restProps}
 >
 	<slot />

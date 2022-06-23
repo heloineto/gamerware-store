@@ -8,6 +8,8 @@
 </svelte:head>
 
 <main class="m-4 md:mx-8">
-	<Header key="contact">Contato</Header>
-	<Contact />
+	<Header class="mb-4" key="contact">Contato</Header>
+	<div class="flex flex-col items-center">
+		<Contact />
+	</div>
 </main>

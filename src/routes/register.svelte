@@ -1,11 +1,16 @@
 <script>
-	import { FloppyDisk, PaintBrushHousehold, PaperPlaneTilt } from "phosphor-svelte";
+	import { CheckCircle, FloppyDisk, PaintBrushHousehold, PaperPlaneTilt } from "phosphor-svelte";
 
 	import FormButton from "../components/forms/FormButton/FormButton.svelte";
 	import Header from "../components/sections/Header/Header.svelte";
 	import Input from "../components/forms/Input.svelte";
 	import { portal } from "../lib/actions/portal";
 	import states from "../lib/constants/states";
+	import TextField from "../components/forms/TextField";
+	import { emailRegex } from "../lib/constants/regex";
+	import PasswordField from "../components/forms/PasswordField/PasswordField.svelte";
+	import Modal from "../components/elements/Modal/Modal.svelte";
+	import SelectField from "../components/forms/SelectField/SelectField.svelte";
 
 	let values = {
 		name: "",
@@ -21,6 +26,18 @@
 	};
 
 	let errors = {};
+
+	let hasErrors = false;
+
+	function checkErrors(_errors) {
+		for (const error of Object.values(_errors)) {
+			if (typeof error === "string") return true;
+		}
+
+		return false;
+	}
+
+	$: hasErrors = checkErrors(errors);
 
 	function onlyNumbers(str) {
 		if (!str) return str;
@@ -50,17 +67,48 @@
 		return undefined;
 	}
 
-	function validateEmail(email) {
-		if (!email) return "Forneça um Email";
-
-		return undefined;
-	}
-
 	function validatePassword(password) {
 		if (!password) return "Forneça uma senha";
 
 		return undefined;
 	}
+
+	function validateEmail(value) {
+		if (!value) return "Forneça um email";
+
+		if (!value.match(emailRegex)) return "Email inválido";
+
+		return undefined;
+	}
+
+	function validateState(value) {
+		if (!value) return "Forneça uma estado";
+
+		return undefined;
+	}
+	function validateCity(value) {
+		if (!value) return "Forneça uma cidade";
+
+		return undefined;
+	}
+	function validateStreet(value) {
+		if (!value) return "Forneça uma rua";
+
+		return undefined;
+	}
+	function validateNumber(value) {
+		if (!value) return "Forneça uma número";
+
+		return undefined;
+	}
+
+	$: errors.name = validateName(values.name);
+	$: errors.email = validateEmail(values.email);
+	$: errors.password = validatePassword(values.password);
+	$: errors.state = validateState(values.state);
+	$: errors.city = validateCity(values.city);
+	$: errors.street = validateStreet(values.street);
+	$: errors.number = validateNumber(values.number);
 
 	$: {
 		values.cpf = onlyNumbers(values.cpf);
@@ -73,7 +121,15 @@
 		errors.cep = validateCEP(values.cep);
 	}
 
-	function onSubmit() {}
+	let modalOpen = false;
+
+	function onSubmit() {
+		modalOpen = true;
+	}
+
+	function onClose() {
+		modalOpen = false;
+	}
 </script>
 
 <svelte:head>
@@ -83,92 +139,58 @@
 <main class="m-4 md:mx-8">
 	<Header key="register">Cadastro</Header>
 
-	<div
-		class="form-wrapper highlight-white mt-4 flex items-center justify-center rounded-xl bg-gray-600 p-5 shadow-xl"
-	>
-		<form method="post" action="">
+	<div class="flex items-center justify-center">
+		<form
+			class="highlight-white mt-4 flex max-w-xl items-center justify-center rounded-xl bg-gray-600 p-5 shadow-xl"
+			on:submit|preventDefault={onSubmit}
+		>
 			<fieldset>
-				<legend class="form__heading">Formulário de cadastro</legend>
-				<fieldset class="personal-data">
-					<legend class="fieldset-legend">Dados pessoais</legend>
-					<label>
-						Nome:
-						<input
-							type="text"
-							name="name"
-							placeholder="Fulano da Silva"
-							maxlength="50"
-							bind:value={values.name}
-						/>
-					</label>
-					<label>
-						E-mail:
-						<input
-							type="email"
-							name="email"
-							placeholder="email@dominio.zzz"
-							bind:value={values.email}
-						/>
-					</label>
-					<label>
-						Senha:
-						<input type="password" name="password" bind:value={values.password} />
-					</label>
-					<Input
-						label="CPF"
+				<fieldset class="flex flex-col gap-2">
+					<legend class="my-2 text-lg font-medium">Dados pessoais</legend>
+					<div class="flex gap-4">
+						<TextField {errors} name="name" label="Nome" bind:value={values.name} />
+						<TextField {errors} name="email" label="Email" bind:value={values.email} />
+						<PasswordField {errors} name="password" label="Senha" bind:value={values.password} />
+					</div>
+
+					<TextField label="CPF" {errors} name="cpf" bind:value={values.cpf} />
+				</fieldset>
+				<fieldset class="flex flex-col gap-2 border-t">
+					<legend class="my-2 text-lg font-medium">Endereço </legend>
+					<TextField label="CEP" {errors} name="cep" bind:value={values.cep} />
+					<SelectField
 						{errors}
-						name="cpf"
-						placeholder="999.999.999-99"
-						bind:value={values.cpf}
+						name="state"
+						label="Estado"
+						options={states}
+						bind:value={values.state}
+					/>
+					<TextField label="Cidade" {errors} name="city" bind:value={values.city} />
+					<TextField label="Rua" {errors} name="street" bind:value={values.street} />
+					<TextField label="Número" {errors} name="number" bind:value={values.number} />
+					<TextField
+						label="Complementos"
+						{errors}
+						name="complements"
+						bind:value={values.complements}
 					/>
 				</fieldset>
-				<fieldset class="fieldset-address">
-					<legend class="fieldset-legend">Endereço</legend>
-					<Input label="CEP" {errors} name="cep" placeholder="99999-999" bind:value={values.cep} />
-					<label>
-						Estado:
-						<select name="Estado" bind:value={values.state}>
-							{#each states as state}
-								<option value={state}>{state}</option>
-							{/each}
-						</select>
-					</label>
-					<label>
-						Cidade: <input type="text" name="cidade" bind:value={values.city} />
-					</label>
-					<label>
-						Rua: <input type="text" name="rua" bind:value={values.street} />
-					</label>
-					<label>
-						Número: <input type="number" name="numero" bind:value={values.number} />
-					</label>
-					<label>
-						Complementos:
-						<input
-							id="input__complementos"
-							type="text"
-							name="complementos"
-							placeholder="Apartamento, ponto de referência ..."
-							bind:value={values.complements}
-						/>
-					</label>
-				</fieldset>
-				<div class="form__buttons">
-					<FormButton
-						class="col-span-2 col-start-4"
-						type="submit"
-						color="green"
-						let:hovering
-						disabled={true}
-					>
+				<div class="mt-4 flex flex-col gap-4 sm:flex-row">
+					<FormButton class="w-1/3" type="submit" color="green" let:hovering disabled={hasErrors}>
 						<PaperPlaneTilt class="h-5 w-5" weight={hovering ? "fill" : "bold"} />
 						Enviar
 					</FormButton>
-					<FormButton class="col-span-2" type="button" color="sky" let:hovering>
+					<FormButton class="w-1/3" type="button" color="sky" let:hovering>
 						<FloppyDisk class="h-5 w-5" weight={hovering ? "fill" : "bold"} />
 						Salvar
 					</FormButton>
-					<FormButton class="col-span-2" type="reset" color="amber" let:hovering>
+					<FormButton
+						class="w-1/3"
+						type="reset"
+						color="amber"
+						let:hovering
+						on:click={() => (values = {})}
+					>
 						<PaintBrushHousehold class="h-5 w-5" weight={hovering ? "fill" : "bold"} />
 						Resetar
 					</FormButton>
@@ -184,114 +206,12 @@
   </pre>
 </div>
 
-<style>
-	:root {
-		--gray-50: #f8fafc;
-		--gray-100: #f1f5f9;
-		--gray-200: #e2e8f0;
-		--gray-300: #cbd5e1;
-		--gray-400: #94a3b8;
-		--gray-500: #64748b;
-		--gray-600: #475569;
-		--gray-700: #334155;
-		--gray-800: #1e293b;
-		--gray-900: #0f172a;
-
-		--green-50: #f7fee7;
-		--green-100: #ecfccb;
-		--green-200: #d9f99d;
-		--green-300: #bef264;
-		--green-400: #a3e635;
-		--green-500: #84cc16;
-		--green-600: #65a30d;
-		--green-700: #4d7c0f;
-		--green-800: #3f6212;
-		--green-900: #365314;
-
-		--text-xs: 0.75rem;
-		--text-sm: 0.875rem;
-		--text-base: 1rem;
-		--text-lg: 1.125rem;
-		--text-xl: 1.25rem;
-		--text-2xl: 1.5rem;
-		--text-3xl: 1.875rem;
-		--text-4xl: 2.25rem;
-		--text-5xl: 3rem;
-		--text-6xl: 3.75rem;
-		--text-7xl: 4.5rem;
-		--text-8xl: 6rem;
-		--text-9xl: 8rem;
-	}
-
-	.form-wrapper {
-		padding: 25px;
-		border-radius: 15px;
-	}
-
-	.fieldset {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-	}
-
-	.form__heading {
-		font-size: x-large;
-		margin-left: auto;
-		margin-right: auto;
-		font-weight: 600;
-	}
-
-	.form__buttons {
-		display: flex;
-		gap: 20px;
-	}
-
-	input,
-	select,
-	textarea {
-		color: var(--gray-900);
-	}
-
-	.left-aligned {
-		display: flex;
-		flex-direction: column;
-		gap: 10px;
-		margin-bottom: 10px;
-		margin-top: 20px;
-	}
-
-	.personal-data {
-		border-bottom: medium solid var(--gray-600);
-		padding-bottom: 16px;
-		display: flex;
-		flex-direction: column;
-		gap: 10px;
-	}
-
-	.fieldset-address {
-		border-bottom: medium solid var(--gray-600);
-		padding-bottom: 16px;
-		margin-bottom: 16px;
-		display: flex;
-		flex-direction: column;
-		gap: 10px;
-	}
-
-	.fieldset-legend {
-		font-size: large;
-		font-weight: 600;
-		padding-top: 16px;
-		padding-bottom: 8px;
-	}
-
-	#input__complementos {
-		width: calc(100% - 8rem);
-	}
-
-	@media (max-width: 768px) {
-		body {
-			background-color: lightblue;
-		}
-	}
-</style>
+<Modal open={modalOpen} {onClose}>
+	<div class="flex flex-col items-center justify-center p-5">
+		<CheckCircle class="h-14 w-14 text-green-500" weight="bold" />
+		<p class="mt-4 mb-2 text-lg font-medium">Formulário enviado com sucesso!</p>
+		<div class="rounded-xl bg-gray-800 p-4">
+			<pre>{JSON.stringify(values, null, 2)}</pre>
+		</div>
+	</div>
+</Modal>

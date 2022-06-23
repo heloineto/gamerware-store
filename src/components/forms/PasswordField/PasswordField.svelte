@@ -37,7 +37,7 @@
 		</label>
 		<input
 			class="block w-full border-0 bg-transparent p-0 text-gray-100 placeholder-gray-500 focus:ring-0 sm:text-sm"
-			type="text"
+			type="password"
 			bind:this={input}
 			bind:value
 			on:focus={() => (focus = true)}
