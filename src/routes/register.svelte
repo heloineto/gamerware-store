@@ -200,12 +200,6 @@
 	</div>
 </main>
 
-<div class="absolute top-5 left-5 h-80 w-40 rounded-xl bg-blue-900 text-sm" use:portal={"root"}>
-	<pre>
-    {JSON.stringify(values, null, 2)}
-  </pre>
-</div>
-
 <Modal open={modalOpen} {onClose}>
 	<div class="flex flex-col items-center justify-center p-5">
 		<CheckCircle class="h-14 w-14 text-green-500" weight="bold" />
