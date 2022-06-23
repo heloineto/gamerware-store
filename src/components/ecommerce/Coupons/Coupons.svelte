@@ -1,14 +1,17 @@
 <script>
 	import TextField from "./../../forms/TextField/TextField.svelte";
 	import Button from "./../../elements/Button";
-	import cupon from "../../../lib/stores/cupon";
+	import coupon from "../../../lib/stores/coupon";
 
 	let value = "";
 
 	function onSubmit() {
 		if (value.toUpperCase() === "UTFPR") {
-			cupon.set(value);
+			coupon.set(0.15);
+			return;
 		}
+
+		coupon.set(null);
 	}
 </script>
 

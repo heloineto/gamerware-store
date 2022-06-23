@@ -12,7 +12,7 @@ function createCart() {
 		}
 	}
 
-	const { subscribe, update } = writable(stored);
+	const { subscribe, set, update } = writable(stored);
 
 	function addProduct(product) {
 		return update((cart) => {
@@ -67,6 +67,7 @@ function createCart() {
 
 	return {
 		subscribe,
+		set,
 		addProduct,
 		removeProduct,
 		deleteProduct,
