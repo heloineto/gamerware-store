@@ -1,8 +1,8 @@
 <script>
 	import "tailwindcss/tailwind.css";
 	import { registerPortal } from "../lib/actions/portal";
-	import Footer from "../components/layout/Footer";
 	import Navbar from "../components/layout/Navbar";
+	import Footer from "../components/layout/Footer";
 </script>
 
 <div id="root" use:registerPortal={"root"}>

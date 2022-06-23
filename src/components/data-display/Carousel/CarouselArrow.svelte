@@ -1,6 +1,6 @@
 <script>
 	import CaretLeft from "phosphor-svelte/lib/CaretLeft";
-	import clsx from "clsx";
+	import classes from "../../../lib/utils/classes";
 
 	export let direction = "NEXT";
 	export let disabled = false;
@@ -9,13 +9,13 @@
 </script>
 
 <div
-	class={clsx("flex h-full px-2 items-center justify-center rounded-full", className)}
+	class={classes("flex h-full px-2 items-center justify-center rounded-full", className)}
 	{...restProps}
 >
 	<button
 		{disabled}
 		on:click
-		class={clsx(
+		class={classes(
 			"z-10 rounded-full border p-2 border-white bg-white/25 text-white",
 			disabled ? "opacity-50" : "transition-transform duration-200 hover:scale-105 active:scale-95"
 		)}

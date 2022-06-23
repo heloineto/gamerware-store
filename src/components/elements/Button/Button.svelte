@@ -1,6 +1,6 @@
 <script>
 	import colors from "../../../lib/constants/colors.js";
-	import clsx from "clsx";
+	import classes from "../../../lib/utils/classes";
 
 	export let color = "gray";
 	export let as = "button";
@@ -12,8 +12,8 @@
 
 <svelte:element
 	this={as}
-	class={clsx(
-		"button flex items-center justify-center whitespace-nowrap rounded-xl transition-all duration-200 hover:scale-105 active:scale-95",
+	class={classes(
+		"button disabled:cursor-not-allowed disabled:!bg-gray-700 disabled:!text-gray-300 disabled:hover:bg-gray-800 flex items-center justify-center whitespace-nowrap rounded-xl transition-all duration-200 hover:scale-105 active:scale-95",
 		className
 	)}
 	style="

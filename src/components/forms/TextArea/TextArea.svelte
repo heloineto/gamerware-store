@@ -1,5 +1,5 @@
 <script>
-	import clsx from "clsx";
+	import classes from "../../../lib/utils/classes";
 	import { afterUpdate, onMount } from "svelte";
 	import isFilled from "./TextField/TextField/utils/isFilled";
 
@@ -21,14 +21,14 @@
 </script>
 
 <div
-	class={clsx(
+	class={classes(
 		"relative rounded-md border border-gray-300 px-3 py-2 shadow-sm focus-within:border-green-400 focus-within:ring-1 focus-within:ring-green-400",
 		$$props.class
 	)}
 >
 	<label
 		for={name}
-		class={clsx(
+		class={classes(
 			"absolute left-2 inline-block bg-gray-600 px-1 transition-all rounded-md",
 			focus ? "text-green-300" : "text-gray-100",
 			shrink ? "top-[-9px] text-xs font-medium" : "top-[5px] font-normal text-base"

@@ -1,12 +1,14 @@
 <script>
 	import ArrowRight from "phosphor-svelte/lib/ArrowRight";
+	import products from "../../../lib/constants/products";
+	import Product from "../../ecommerce/Product";
 
 	import Button from "../../elements/Button/Button.svelte";
 </script>
 
 <section class="mx-8 flex flex-col pt-4 pb-12" aria-label="produtos principais">
-	<header class="h-40">
-		<h2 class="my-8 text-4xl font-bold">Principais Computadores</h2>
+	<header>
+		<h2 class="my-8 text-3xl font-bold sm:text-4xl">Principais Computadores</h2>
 		<Button
 			as="a"
 			href="/products"
@@ -20,39 +22,9 @@
 			/>
 		</Button>
 	</header>
-	<div class="main-products__products">
-		<!-- <div class="main-products__product">
-			<img
-				class="main-products__product__image"
-				height="500"
-				width="500"
-				src="public/product-images/0.jpg"
-				alt="computador 0"
-			/>
-			<h3 class="main-products__product__heading"><a href="#">Computador 0</a></h3>
-			<p class="main-products__product__price">R$ 2.000,00</p>
-		</div>
-		<div class="main-products__product">
-			<img
-				class="main-products__product__image"
-				height="500"
-				width="500"
-				src="public/product-images/1.jpg"
-				alt="computador 1"
-			/>
-			<h3 class="main-products__product__heading"><a href="#">Computador 1</a></h3>
-			<p class="main-products__product__price">R$ 3.000,00</p>
-		</div>
-		<div class="main-products__product">
-			<img
-				class="main-products__product__image"
-				height="500"
-				width="500"
-				src="public/product-images/2.jpg"
-				alt="computador 2"
-			/>
-			<h3 class="main-products__product__heading"><a href="#">Computador 2</a></h3>
-			<p class="main-products__product__price">R$ 4.000,00</p>
-		</div> -->
+	<div class="relative grid flex-grow grid-cols-12 gap-4 py-8">
+		<Product class="col-span-12 sm:col-span-4" product={products[0]} />
+		<Product class="col-span-12 sm:col-span-4" product={products[1]} />
+		<Product class="col-span-12 sm:col-span-4" product={products[2]} />
 	</div>
 </section>

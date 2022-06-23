@@ -5,7 +5,7 @@
 	import CarouselArrow from "./CarouselArrow.svelte";
 	import mutation from "../../../lib/actions/mutation";
 	import resize from "../../../lib/actions/resize";
-	import clsx from "clsx";
+	import classes from "../../../lib/utils/classes";
 
 	export let containerClass;
 
@@ -70,9 +70,9 @@
 	}
 </script>
 
-<div class={clsx("flex w-full flex-col items-center", classNames)} {...restProps}>
+<div class={classes("flex w-full flex-col items-center", classNames)} {...restProps}>
 	<div
-		class={clsx("relative box-border flex h-[30rem] w-full overflow-hidden", containerClass)}
+		class={classes("relative box-border flex h-[30rem] w-full overflow-hidden", containerClass)}
 		bind:this={container}
 		use:resize={onResize}
 	>

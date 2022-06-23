@@ -1,7 +1,7 @@
 <script>
 	import { createEventDispatcher } from "svelte";
 	import CarouselDot from "./CarouselDot.svelte";
-	import clsx from "clsx";
+	import classes from "../../../lib/utils/classes";
 
 	const dispatch = createEventDispatcher();
 
@@ -11,7 +11,10 @@
 	const { class: className, ...restProps } = $$restProps;
 </script>
 
-<div class={clsx("h-6 flex flex-wrap items-center justify-center px-8", className)} {...restProps}>
+<div
+	class={classes("h-6 flex flex-wrap items-center justify-center px-8", className)}
+	{...restProps}
+>
 	{#each Array(pagesCount) as _, pageIndex (pageIndex)}
 		<div class="flex h-6 w-6 items-center justify-center">
 			<CarouselDot

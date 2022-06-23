@@ -1,24 +1,25 @@
 <script>
+	import Header from "./../components/sections/Header/Header.svelte";
 	import Modal from "./../components/elements/Modal/Modal.svelte";
 	import Button from "../components/elements/Button";
-	import Product from "../components/Product.svelte";
+	import Product from "../components/ecommerce/Product";
 	import products from "../lib/constants/products";
 
 	let sortedProducts = products;
 
 	let sortedName = products.slice().sort(function (a, b) {
-		var keyA = a.name;
-		var keyB = b.name;
-		// Compare the 2 dates
+		let keyA = a.name;
+		let keyB = b.name;
+
 		if (keyA < keyB) return -1;
 		if (keyA > keyB) return 1;
 		return 0;
 	});
 
 	let sortedPrice = products.slice().sort(function (a, b) {
-		var keyA = a.price;
-		var keyB = b.price;
-		// Compare the 2 dates
+		let keyA = a.price;
+		let keyB = b.price;
+
 		if (keyA < keyB) return -1;
 		if (keyA > keyB) return 1;
 		return 0;
@@ -28,20 +29,25 @@
 	let selectedProduct;
 </script>
 
+<svelte:head>
+	<title>Produtos - Gamerware</title>
+</svelte:head>
+
 <Modal open={modalOpen} onClose={() => (modalOpen = false)}>
 	<Product product={selectedProduct} />
 </Modal>
 
-<main>
+<main class="m-4 md:mx-8">
+	<Header key="products">Computadores</Header>
 	<div class="mt-4 flex items-center gap-3">
 		Order por:
-		<Button class="px-3 py-2" color="yellow" on:click={() => (sortedProducts = products)}>
+		<Button class="w-32 px-3 py-2" color="yellow" on:click={() => (sortedProducts = products)}>
 			Normal
 		</Button>
-		<Button class="px-3 py-2" color="blue" on:click={() => (sortedProducts = sortedName)}>
+		<Button class="w-32 px-3 py-2" color="blue" on:click={() => (sortedProducts = sortedName)}>
 			Nome
 		</Button>
-		<Button class="px-3 py-2" color="green" on:click={() => (sortedProducts = sortedPrice)}>
+		<Button class="w-32 px-3 py-2" color="green" on:click={() => (sortedProducts = sortedPrice)}>
 			Preço
 		</Button>
 	</div>
@@ -61,7 +67,7 @@
 <style>
 	.products {
 		display: grid;
-		margin: 20px;
+		margin: 20px 0;
 		gap: 10px;
 		grid-template-columns: 1fr 1fr 1fr;
 	}

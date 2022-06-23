@@ -1,5 +1,5 @@
 <script>
-	import clsx from "clsx";
+	import classes from "../../../lib/utils/classes";
 	import Button from "../../elements/Button";
 
 	let hovering = false;
@@ -7,7 +7,7 @@
 </script>
 
 <Button
-	class={clsx("w-40 gap-2 py-2 hover:font-semibold", className)}
+	class={classes("w-40 gap-2 py-2 hover:enabled:font-semibold", className)}
 	on:mouseenter={() => (hovering = true)}
 	on:mouseleave={() => (hovering = false)}
 	{...restProps}

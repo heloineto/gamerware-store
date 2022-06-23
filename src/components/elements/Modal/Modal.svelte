@@ -1,7 +1,7 @@
 <script>
 	import { portal } from "../../../lib/actions/portal";
 	import clickOutside from "../../../lib/actions/clickOutside";
-	import clsx from "clsx";
+	import classes from "../../../lib/utils/classes";
 	import { fly } from "svelte/transition";
 
 	export let open = false;
@@ -28,14 +28,14 @@
 	<div
 		role="dialog"
 		use:portal={"root"}
-		class={clsx(
+		class={classes(
 			"fixed inset-0 top-0 left-0 z-40 h-full w-full bg-black/20 backdrop-blur-sm dark:bg-slate-900/80 flex justify-center items-center",
 			className
 		)}
 	>
 		<div
 			transition:fly={{ y: -10, duration: 200 }}
-			class={clsx("z-50 highlight-white rounded-xl bg-gray-600 p-5 shadow-lg", cardClassName)}
+			class={classes("z-50 highlight-white rounded-xl bg-gray-600 p-5 shadow-lg", cardClassName)}
 			use:clickOutside={{ callback: onClickOutside, exclude }}
 		>
 			<slot />

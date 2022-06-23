@@ -31,7 +31,7 @@ let products = [
 	},
 	{
 		key: 6,
-		name: "Gamerwere Gamer",
+		name: "Gamerware Gamer",
 		price: 3000.0,
 	},
 	{
@@ -41,7 +41,7 @@ let products = [
 	},
 	{
 		key: 8,
-		name: "Ready for battle",
+		name: "Ready for Battle",
 		price: 1000.0,
 	},
 	{
@@ -51,7 +51,7 @@ let products = [
 	},
 	{
 		key: 10,
-		name: "Incel fuel",
+		name: "Incel Fuel",
 		price: 5700.0,
 	},
 	{

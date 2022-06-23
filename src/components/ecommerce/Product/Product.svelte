@@ -1,8 +1,8 @@
 <script>
-	import { Plus } from "phosphor-svelte";
-
-	import Button from ".../elements/Button";
+	import Plus from "phosphor-svelte/lib/Plus";
+	import Button from "../../elements/Button";
 	import cart from "../../../lib/stores/cart";
+	import classes from "../../../lib/utils/classes";
 
 	export let product;
 
@@ -13,9 +13,11 @@
 
 	let { key, price, name } = product;
 	let priceDisplay = formatter.format(price);
+
+	const { class: className, ...restProps } = $$restProps;
 </script>
 
-<div class="product" on:click>
+<div class={classes("product", className)} on:click {...restProps}>
 	<p>{name}</p>
 	<img src="/product-images/{key}.jpg" alt="computador {key + 1}" height="200" width="200" />
 	<div>
@@ -30,9 +32,7 @@
 			on:click={(event) => {
 				event.stopPropagation();
 
-				cart.update((_cart) => {
-					return { products: [..._cart.products, product] };
-				});
+				cart.update();
 			}}
 		>
 			<Plus size={32} weight="bold" />
