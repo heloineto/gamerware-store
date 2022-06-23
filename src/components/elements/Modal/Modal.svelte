@@ -11,7 +11,7 @@
 
 	const { class: className } = $$restProps;
 
-	const { class: cardClassName, ...restCardProps } = cardProps;
+	const { class: cardClassName } = cardProps;
 
 	function onClickOutside() {
 		onClose?.();

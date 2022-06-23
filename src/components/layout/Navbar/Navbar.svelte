@@ -4,7 +4,9 @@
 	import Button from "../../elements/Button/Button.svelte";
 	import Menu from "../../elements/Menu";
 	import NavbarItem from "./NavbarItem.svelte";
-	import cart from "../../../lib/stores/cart";
+	import cart, { getCount } from "../../../lib/stores/cart";
+
+	$: productsCount = getCount($cart);
 </script>
 
 <div class="flex h-[var(--h-navbar)] flex-col pt-4">
@@ -18,7 +20,7 @@
 			</Button>
 		</div>
 		<div class="flex h-full flex-grow items-center justify-center">
-			<Menu breakpoint="md">
+			<Menu breakpoint="lg">
 				<NavbarItem href="/">Início</NavbarItem>
 				<NavbarItem href="/products">Produtos</NavbarItem>
 				<NavbarItem href="/contact">Entre em contato</NavbarItem>
@@ -28,7 +30,7 @@
 		<div class="w-32">
 			<Button as="a" href="/cart" class="w-28 gap-2 p-2">
 				<ShoppingCart class="h-7 w-7" />
-				<span class="font-medium">{$cart.products.length}</span>
+				<span class="font-medium">{productsCount}</span>
 			</Button>
 		</div>
 	</nav>

@@ -40,7 +40,7 @@
 <main class="m-4 md:mx-8">
 	<Header key="products">Computadores</Header>
 	<div class="mt-4 flex items-center gap-3">
-		Order por:
+		Ordenar por:
 		<Button class="w-32 px-3 py-2" color="yellow" on:click={() => (sortedProducts = products)}>
 			Normal
 		</Button>

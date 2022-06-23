@@ -18,7 +18,7 @@
 			de Alta Performance
 		</h1>
 		<dl
-			class="mb-4 flex items-center gap-3 text-xs font-semibold uppercase tracking-wide text-gray-300 sm:gap-6"
+			class="mb-4 flex flex-col gap-3 text-xs font-semibold uppercase tracking-wide text-gray-300 sm:gap-6 md:flex-row md:items-center"
 		>
 			<dd class="flex items-center">
 				<img class="mr-2 h-7 flex-none" src="/logos/nvidea.svg" alt="Nvidea logo" />

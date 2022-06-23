@@ -3,8 +3,10 @@
 	import Button from "../../elements/Button";
 	import cart from "../../../lib/stores/cart";
 	import classes from "../../../lib/utils/classes";
+	import { Minus } from "phosphor-svelte";
 
 	export let product;
+	export let amount;
 
 	var formatter = new Intl.NumberFormat("pt-BR", {
 		style: "currency",
@@ -25,17 +27,33 @@
 		<p>Nome: {name}</p>
 		<p>Preço: {priceDisplay}</p>
 	</div>
-	<div>
+	<div class="mt-2 flex items-center gap-4">
 		<Button
-			class="h-14 w-14 !rounded-full"
-			color="gray"
+			class="h-10 w-10 !rounded-full"
+			color="orange"
 			on:click={(event) => {
 				event.stopPropagation();
 
-				cart.update();
+				cart.addProduct(product);
 			}}
 		>
-			<Plus size={32} weight="bold" />
+			<Minus class="h-6 w-8" weight="bold" />
+		</Button>
+		{#if amount}
+			<p class="text-xl font-bold">
+				{amount}
+			</p>
+		{/if}
+		<Button
+			class="h-10 w-10 !rounded-full"
+			color="green"
+			on:click={(event) => {
+				event.stopPropagation();
+
+				cart.addProduct(product);
+			}}
+		>
+			<Plus class="h-6 w-6" weight="bold" />
 		</Button>
 	</div>
 </div>

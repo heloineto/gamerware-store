@@ -9,7 +9,7 @@
 </svelte:head>
 
 <main class="m-4 md:mx-8">
-	<Header key="cart">Carrinho de Compras</Header>
+	<Header class="mb-4" key="cart">Carrinho de Compras</Header>
 
 	<Cart />
 </main>

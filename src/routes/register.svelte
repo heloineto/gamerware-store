@@ -3,7 +3,7 @@
 
 	import FormButton from "../components/forms/FormButton/FormButton.svelte";
 	import Header from "../components/sections/Header/Header.svelte";
-	import Input from "../form/Input.svelte";
+	import Input from "../components/forms/Input.svelte";
 	import { portal } from "../lib/actions/portal";
 	import states from "../lib/constants/states";
 

@@ -1,9 +1,9 @@
 <script>
+	import cart from "../../../lib/stores/cart";
 	import Button from "./../../elements/Button";
 	import SummaryItem from "./SummaryItem.svelte";
 </script>
 
-<!-- SOME OF THE CLASSES SHOULD BE PASSED -->
 <section
 	class="highlight-white mt-16 rounded-xl bg-gray-600 p-5 shadow-xl lg:col-span-5 lg:mt-0 lg:p-8"
 >
@@ -11,8 +11,16 @@
 
 	<dl class="mt-6">
 		<div class="divide-y divide-gray-400">
-			<SummaryItem title="Subtotal" description="R$ 99,00" />
-			<SummaryItem title="Subtotal" description="R$ 99,00" />
+			{#each Object.entries($cart) as [key, { product: { price, name }, amount }] (key)}
+				<SummaryItem
+					title={name}
+					{amount}
+					description={(price * amount).toLocaleString("pt-br", {
+						style: "currency",
+						currency: "BRL",
+					})}
+				/>
+			{/each}
 		</div>
 
 		<div class="flex items-center justify-between border-t border-gray-200 pt-4">
